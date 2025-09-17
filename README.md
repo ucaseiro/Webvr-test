@@ -2,7 +2,8 @@
 
 ##WEBVR
 
-[texture](./Webvr-test/demo.html)
+[texture](./demo.html)
+
 
 
 

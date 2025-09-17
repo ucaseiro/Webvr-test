@@ -2,5 +2,6 @@
 
 ##WEBVR
 
-*[texture](https://ucaseiro.github.io/Webvr-test/demo.html)
+[texture](https://ucaseiro.github.io/Webvr-test/demo.html)
+
 

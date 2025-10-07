@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+
+      <!-- ====== ASSETS ====== -->
+      <a-assets>
+        <img id="wallTex" src="assets/brick.jpg">
+        <img id="cafard" src="assets/cafard.png">
+        <img id="snake" src="assets/snake.webp">
+        <img id="bug" src="assets/bug.png">
+        <img id="bat" src="assets/bat.png">
+        <img id="fog" src="assets/fog.jpg">
+      </a-assets>
+
+      <!-- ====== MIXINS ====== -->
+      <!-- murs -->
+      <a-mixin id="wallBase" geometry="primitive: plane; width: 2; height: 4" material="src: #wallTex; side: double"></a-mixin>
+      <!-- animaux -->
+      <a-mixin id="mSnake" geometry="primitive: plane; width: 0.5; height: 0.5" material="src: #snake; transparent: true ; side:double"></a-mixin>
+      <a-mixin id="mBug" geometry="primitive: plane; width: 0.5; height: 0.5" material="src: #bug; transparent: true; side:double"></a-mixin>
+      <a-mixin id="mCafard" geometry="primitive: plane; width: 0.5; height: 0.5" material="src: #cafard; transparent: true; side:double"></a-mixin>
+      <a-mixin id="mBat" geometry="primitive: plane; width: 0.5; height: 0.5" material="src: #bat; transparent: true; side:double"></a-mixin>
+
+      <!-- ====== MURS ====== -->
+      <a-entity mixin="wallBase" position="-2.5 1 -1" rotation="0 90 0"></a-entity>
+      <a-entity mixin="wallBase" position="-2.5 1 1" rotation="0 90 0" geometry="width: 2"></a-entity>
+      <a-entity mixin="wallBase" position="-2 1 -2"></a-entity>
+      <a-entity mixin="wallBase" position="-1.5 1 0"></a-entity>
+      <a-entity mixin="wallBase" position="0.25 1 2" geometry="width: 2.5"></a-entity>
+      <a-entity mixin="wallBase" position="-1.5 1 -1.5" rotation="0 90 0" geometry="width: 1"></a-entity>
+      <a-entity mixin="wallBase" position="-0.5 1 0" rotation="0 90 0"></a-entity>
+      <a-entity mixin="wallBase" position="0.5 1 -2"></a-entity>
+      <a-entity mixin="wallBase" position="1.5 1 0" rotation="0 90 0" geometry="width: 4"></a-entity>
+      <a-entity mixin="wallBase" position="0.5 1 1.5" rotation="0 90 0" geometry="width: 1"></a-entity>
+      <a-entity mixin="wallBase" position="-1 1 1.5" rotation="0 90 0" geometry="width: 1"></a-entity>
+      <a-entity mixin="wallBase" position="0 1 -1" geometry="width: 1"></a-entity>
+      <a-entity mixin="wallBase" position="-0.5 1 -1.75" rotation="0 90 0" geometry="width: 0.5"></a-entity>
+      <a-entity mixin="wallBase" position="-0.75 1 -1.5" geometry="width: 0.5"></a-entity>
+      <a-entity mixin="wallBase" position="-1.75 1 2" geometry="width: 1.5"></a-entity>
+      <a-entity mixin="wallBase" position="-1.5 1 1" geometry="width: 1"></a-entity>
+      <a-entity mixin="wallBase" position="1 1 0" geometry="width: 1"></a-entity>
+
+      <!-- sol -->
+      <a-plane position="-0.5 0 0" rotation="-90 0 0" width="4" height="4" src="#wallTex"></a-plane>
+
+      <!-- ====== SERPENTS (debout, face au joueur) ====== -->
+      <a-entity mixin="mSnake" position="0.91115 0.25 -1.67113" scale="2 2 1"></a-entity>
+      <a-entity mixin="mSnake" position="1 0.25 0.5" rotation="0 14.999999999999998 0" scale="2 2 1"></a-entity>
+      <a-entity mixin="mSnake" position="-1.17813 0.25 -0.59053" rotation="0 -29.999999999999996 0" scale="2 2 1"></a-entity>
+      <a-entity mixin="mSnake" position="-1.20372 0.25 0.31488" rotation="0 45 0" scale="2 2 1"></a-entity>
+
+      <!-- ====== CAFARDS ET BUGS (sol + murs, léger flottement) ====== -->
+      <a-entity mixin="mCafard" position="0 0.01 0.5" rotation="-90 0 0"></a-entity>
+      <a-entity mixin="mCafard" position="1 0.01 -0.5" rotation="-90 0 0"></a-entity>
+      <a-entity mixin="mCafard" position="-1 0.01 1" rotation="-90 0 0"></a-entity>
+      <a-entity mixin="mBug" position="-1.81254 0.01 0.4263" rotation="-90 -36.580000000000005 0"></a-entity>
+      <a-entity mixin="mBug" position="-0.5 0.01 -1.2" rotation="-90 0 0"></a-entity>
+      <a-entity mixin="mBug" position="0.7 0.25 0.8" rotation="-90 0 0"></a-entity>
+
+      <!-- murs (animaux collés aux murs) -->
+      <a-entity mixin="mCafard" position="-2.3 1 0.02374"></a-entity>
+      <a-entity mixin="mBug" position="0 1 -1.99273" rotation="0 -0.11 -24.5"></a-entity>
+      <a-entity mixin="mBug" position="-2.46732 1 -1.27805" rotation="0 -90 0.18"></a-entity>
+      <a-entity mixin="mCafard" position="-1.5 0,1 1.5" rotation="-90 0 0"></a-entity>
+      <a-entity mixin="mCafard" position="0.5 1 -1.90796" rotation="0 0 -2.54"></a-entity>
+      <a-entity mixin="mBug" position="-0.48842 1 0.5" rotation="0 90 -90"></a-entity>
+
+      <!-- ====== BATS (volants dans le ciel) ====== -->
+      <a-entity mixin="mBat" position="-1.17999 3.86134 -0.77928" rotation="-90 29.999999999999996 0"></a-entity>
+      <a-entity mixin="mBat" position="-0.80313 3.52146 1.50156" rotation="-90 0 0"></a-entity>
+      <a-entity mixin="mBat" position="-1.92846 2.58837 0.52259" rotation="-90 75 0"></a-entity>
+      <a-entity mixin="mBat" position="0.5 2.2 -0.5" rotation="-90 125.00000000000001 0"></a-entity>
+      <!-- sky & camera & lumières -->
+      <a-sky color="#becbbe" src="#fog"></a-sky>
+      <a-camera position="0 1.6 0" wasd-controls="acceleration: 10"></a-camera>
+      <a-light color="#b0b0b0" type="ambient" intensity="0.14"></a-light>
+      <a-entity light="color: #2c4e27; intensity: 0.154; castShadow: true" position="-0.5 1 1"></a-entity>
+
+    </a-scene>
+  </body>
+</html>

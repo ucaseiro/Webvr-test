@@ -2,49 +2,84 @@
   <head>
     <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
     <script src="https://unpkg.com/@c-frame/aframe-physics-system@4.2.2/dist/aframe-physics-system.min.js"></script>
-
   </head>
   <body>
     <a-scene>
-      <!-- formes -->
+      <!-- ====== ASSETS ====== -->
       <a-assets>
         <a-asset-item id="shelf" src="assets/shelf2.gltf"></a-asset-item>
         <a-asset-item id="books" src="assets/books.gltf"></a-asset-item>
+        <a-asset-item id="book1" src="assets/book_closed.glb"></a-asset-item>
+        <a-asset-item id="book2" src="assets/book_opened_semi.glb"></a-asset-item>
+        <a-asset-item id="book3" src="assets/book_opened_full.glb"></a-asset-item>
       </a-assets>
-    
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-1. 0 -1"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="1.1 0 -0.8" rotation="0 -53 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-0.2 0 -1.2"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="1.3 0 0.3" rotation="0 -113 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="0.6 0 -1.5" rotation="0 -17 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="0.7 0 1.1" rotation="0 -155 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-0.3 0 1.3" rotation="0 176 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-1.3 0 1" rotation="0 130 0"></a-entity>
-      <a-entity gltf-model="assets/shelf2.gltf" scale="0.35 0.35 0.35" position="-1.4 0 -0.1" rotation="0 84.5 0"></a-entity>
 
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-1. 1.6 -1"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="1.1 1.6 -0.8" rotation="0 -53 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-0.2 1.6 -1.2"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="1.3 1.6 0.3" rotation="0 -113 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="0.6 1.6 -1.5" rotation="0 -17 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="0.7 1.6 1.1" rotation="0 -155 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-0.3 1.6 1.3" rotation="0 176 0"></a-entity>
-      <a-entity gltf-model="#shelf" scale="0.35 0.35 0.35" position="-1.3 1.6 1." rotation="0 130 0"></a-entity>
-      <a-entity gltf-model="assets/shelf2.gltf" scale="0.35 0.35 0.35" position="-1.4 1.6 -0.1" rotation="0 84.5 0"></a-entity>
+      <!-- ====== MIXINS ====== -->
+      <!-- étagères -->
+      <a-mixin id="shelfBase" gltf-model="#shelf" scale="0.35 0.35 0.35"></a-mixin>
 
-      <a-entity gltf-model="assets/books.gltf" scale="0.5 0.5 0.5" position="0.34996 0 -0.67669"></a-entity>
-      <a-entity gltf-model="assets/books.gltf" scale="0.5 0.5 0.5" position="0.38709 0 0.38002" rotation="0 75 0"></a-entity>
-      <a-entity gltf-model="assets/books.gltf" scale="0.5 0.5 0.5" position="-0.49067 0 -0.31029" rotation="0 250.00000000000003 0"></a-entity>
-      <a-entity gltf-model="assets/books.gltf" scale="0.5 0.5 0.5" position="-0.68406 0 0.54774" rotation="0 -180 0"></a-entity>
-      <a-box scale="3 3 3" position="0 1.5 0"></a-box>
+      <!-- livres posés -->
+      <a-mixin id="booksBase" gltf-model="#books" scale="0.5 0.5 0.5"></a-mixin>
 
-      <!-- LCA -->
+      <!-- livres en l’air -->
+      <a-mixin id="bookAir" scale="0.5 0.5 0.5"></a-mixin>
+
+      <!-- ====== ÉTAGE 1 ====== -->
+      <a-entity mixin="shelfBase" position="-1 0 -1"></a-entity>
+      <a-entity mixin="shelfBase" position="1.1 0 -0.8" rotation="0 -53 0"></a-entity>
+      <a-entity mixin="shelfBase" position="-0.2 0 -1.2"></a-entity>
+      <a-entity mixin="shelfBase" position="1.3 0 0.3" rotation="0 -113 0"></a-entity>
+      <a-entity mixin="shelfBase" position="0.6 0 -1.5" rotation="0 -17 0"></a-entity>
+      <a-entity mixin="shelfBase" position="0.7 0 1.1" rotation="0 -155 0"></a-entity>
+      <a-entity mixin="shelfBase" position="-0.3 0 1.3" rotation="0 176 0"></a-entity>
+      <a-entity mixin="shelfBase" position="-1.3 0 1" rotation="0 130 0"></a-entity>
+      <a-entity mixin="shelfBase" gltf-model="assets/shelf2.gltf" position="-1.4 0 -0.1" rotation="0 84.5 0"></a-entity>
+
+      <!-- ====== ÉTAGE 2 ====== -->
+      <a-entity mixin="shelfBase" position="-1 1.6 -1"></a-entity>
+      <a-entity mixin="shelfBase" position="1.1 1.6 -0.8" rotation="0 -53 0"></a-entity>
+      <a-entity mixin="shelfBase" position="-0.2 1.6 -1.2"></a-entity>
+      <a-entity mixin="shelfBase" position="1.3 1.6 0.3" rotation="0 -113 0"></a-entity>
+      <a-entity mixin="shelfBase" position="0.6 1.6 -1.5" rotation="0 -17 0"></a-entity>
+      <a-entity mixin="shelfBase" position="0.7 1.6 1.1" rotation="0 -155 0"></a-entity>
+      <a-entity mixin="shelfBase" position="-0.3 1.6 1.3" rotation="0 176 0"></a-entity>
+      <a-entity mixin="shelfBase" position="-1.3 1.6 1" rotation="0 130 0"></a-entity>
+      <a-entity mixin="shelfBase" gltf-model="assets/shelf2.gltf" position="-1.4 1.6 -0.1" rotation="0 84.5 0"></a-entity>
+
+      <!-- ====== LIVRES SOL ====== -->
+      <a-entity mixin="booksBase" position="0.35 0 -0.67"></a-entity>
+      <a-entity mixin="booksBase" position="0.38 0 0.38" rotation="0 75 0"></a-entity>
+      <a-entity mixin="booksBase" position="-0.49 0 -0.31" rotation="0 250 0"></a-entity>
+      <a-entity mixin="booksBase" position="-0.68 0 0.55" rotation="0 -180 0"></a-entity>
+
+<!-- LIVRES AIR : BOOK1 (fermé) -->
+<a-entity mixin="bookAir" gltf-model="#book1" position="0.159 0.681 0.482" rotation="10 15 0"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book1" position="0.4 1.3 -0.3" rotation="-5 60 20"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book1" position="-0.5 1.1 0.2" rotation="15 120 -10"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book1" position="0.368 1.237 0.269" rotation="0 -30 15"></a-entity>
+
+<!-- LIVRES AIR : BOOK2 (semi-ouvert) -->
+<a-entity mixin="bookAir" gltf-model="#book2" position="0.3 1.8 0.2" rotation="10 75 5"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book2" position="-0.6 1.4 -0.4" rotation="-10 200 0"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book2" position="0.7 1.2 0.1" rotation="5 -90 15"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book2" position="0 1.6 -0.6" rotation="-20 150 -10"></a-entity>
+
+<!-- LIVRES AIR : BOOK3 (ouvert complet) -->
+<a-entity mixin="bookAir" gltf-model="#book3" position="-0.4 1.9 0.3" rotation="-12.252 -46.270 169.578"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book3" position="0.5 1.7 -0.5" rotation="-10 -45 -5"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book3" position="0.1 1.3 0.6" rotation="5 30 10"></a-entity>
+<a-entity mixin="bookAir" gltf-model="#book3" position="-0.7 1.5 0,05" rotation="0 200 15"></a-entity>
+
+
+      <!-- ====== ENVIRONNEMENT ====== -->
       <a-plane position="0 0 0" rotation="-90 0 0" width="3" height="3" src="./assets/rug.jpeg" repeat="4 4"></a-plane>
       <a-sky color="#becbbe" src="./assets/library.jpg"></a-sky>
-      <a-camera position="0 1.6 0" aframe-injected="" wasd-controls="acceleration: 10"></a-camera>
-      <a-light type="point" color="#ff8667" position="-0.00904 4.70534 -0.11427"></a-light>
-      <a-light type="ambient" color="#935913" position="0 2.6238 0.13493"></a-light>
-      <a-entity light="color: #f36600; intensity: 1.884; castShadow: true" position="-0.5 1 5.72737" data-aframe-default-light="" aframe-injected=""></a-entity>
+
+      <!-- Caméra et lumières -->
+      <a-camera position="0 1.6 0" wasd-controls="acceleration: 10"></a-camera>
+      <a-light type="point" color="#ff8667" position="0 4.7 0"></a-light>
+      <a-light type="ambient" color="#935913"></a-light>
+      <a-entity light="color: #f36600; intensity: 1.9; castShadow: true" position="-0.5 1 5.7"></a-entity>
     </a-scene>
   </body>
-</html
+</html>

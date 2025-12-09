@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>   
+</head>
+
+<body>
+
+    <a-scene arjs>
+        <a-assets>
+            <a-asset-item id="glbModel" src="./assets/3Danims/the_fish_particle.glb"></a-asset-item>
+        </a-assets>
+    
+        <a-entity id="fish" scale="1 1 1" position="0 0 -5" rotation="0 -90 0" animation-mixer
+            gltf-model="#glbModel">
+        </a-entity>
+        <a-entity id="fish2" scale="0.5 0.5 0.5" position="-1 0 -5" rotation="0 0 0" animation-mixer
+            gltf-model="#glbModel">
+        </a-entity>
+        <a-entity id="fish3" scale="0.1 0.1 0.1" position="0 1.5 -1" rotation="45 -90 -45" animation-mixer
+        gltf-model="#glbModel">
+        <a-light color="#10a4e8" type="ambient" intensity="10"></a-light>
+        <a-entity light="color: #10a4e8; intensity: 10" position="-0.5 1 1"></a-entity>
+        <a-entity light="color: #10a4e8; intensity: 15" position="-0.5 -2 1"></a-entity>
+    </a-entity>
+    </a-scene>
+
+</body>
+
+</html>
